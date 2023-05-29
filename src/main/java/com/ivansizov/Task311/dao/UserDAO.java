@@ -2,34 +2,17 @@ package com.ivansizov.Task311.dao;
 
 
 import com.ivansizov.Task311.models.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public class UserDAO implements UserDAOImpl {
-    @PersistenceContext
-    private EntityManager entityManager;
+public interface UserDAO {
+    User getUser(int id);
 
-    public User getUser(int id) {
-        return entityManager.find(User.class, id);
-    }
+    void addUser(User user);
 
-    public void addUser(User user) {
-        entityManager.persist(user);
-    }
+    void updateUser(User user);
 
-    public void updateUser(User user) {
-        entityManager.merge(user);
-    }
+    void deleteUser(User user);
 
-    public void deleteUser(User user) {
-        entityManager.remove(user);
-    }
-
-    public List<User> getAllUsers() {
-        return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
-    }
+    List<User> getAllUsers();
 }

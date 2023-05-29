@@ -1,7 +1,7 @@
 package com.ivansizov.Task311.service;
 
 
-import com.ivansizov.Task311.dao.UserDAOImpl;
+import com.ivansizov.Task311.dao.UserDAO;
 import com.ivansizov.Task311.models.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,10 @@ import java.util.List;
 @Service
 @Transactional
 public class UserService {
-    private final UserDAOImpl usersDAO;
+    private final UserDAO usersDAO;
 
     @Autowired
-    public UserService(UserDAOImpl usersDAO) {
+    public UserService(UserDAO usersDAO) {
         this.usersDAO = usersDAO;
     }
 
