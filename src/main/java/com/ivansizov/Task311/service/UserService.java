@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Transactional
 public class UserService {
     private final UserDAO usersDAO;
 
@@ -27,14 +26,17 @@ public class UserService {
         return usersDAO.getUser(id);
     }
 
+    @Transactional
     public void addUser(User user) {
         usersDAO.addUser(user);
     }
 
+    @Transactional
     public void updateUser(User user) {
         usersDAO.updateUser(user);
     }
 
+    @Transactional
     public void deleteUser(int id) {
         User user = usersDAO.getUser(id);
         usersDAO.deleteUser(user);
